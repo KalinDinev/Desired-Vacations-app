@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/vacationsFragment">
+    <fragment
+        android:id="@+id/vacationsFragment"
+        android:name="com.example.vacantionapp.views.VacationsFragment"
+        android:label="fragment_vacations"
+        tools:layout="@layout/fragment_vacations" >
+        <action
+            android:id="@+id/action_vacationsFragment_to_createVacation"
+            app:destination="@id/createVacation" />
+        <action
+            android:id="@+id/action_vacationsFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createVacation"
+        android:name="com.example.vacantionapp.views.CreateVacation"
+        android:label="fragment_create_vacation"
+        tools:layout="@layout/fragment_create_vacation" >
+        <action
+            android:id="@+id/action_createVacation_to_vacationsFragment"
+            app:destination="@id/vacationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.vacantionapp.views.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_vacationsFragment"
+            app:destination="@id/vacationsFragment" />
+        <argument
+            android:name="currentId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
