@@ -36,5 +36,32 @@
         <argument
             android:name="currentId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_detailFragment_to_modalBottomSheet"
+            app:destination="@id/modalBottomSheet" />
     </fragment>
+    <dialog
+        android:id="@+id/socialsFragment"
+        android:name="com.example.vacantionapp.modal.SocialsFragment"
+        android:label="fragment_socials"
+        tools:layout="@layout/fragment_socials" >
+        <action
+            android:id="@+id/action_socialsFragment_to_modalBottomSheet"
+            app:destination="@id/modalBottomSheet" />
+    </dialog>
+    <dialog
+        android:id="@+id/modalBottomSheet"
+        android:name="com.example.vacantionapp.modal.ModalBottomSheet"
+        android:label="fragment_modal_bottom_sheet"
+        tools:layout="@layout/fragment_modal_bottom_sheet" >
+        <action
+            android:id="@+id/action_modalBottomSheet_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_modalBottomSheet_to_socialsFragment"
+            app:destination="@id/socialsFragment" />
+        <action
+            android:id="@+id/action_modalBottomSheet_to_vacationsFragment"
+            app:destination="@id/vacationsFragment" />
+    </dialog>
 </navigation>

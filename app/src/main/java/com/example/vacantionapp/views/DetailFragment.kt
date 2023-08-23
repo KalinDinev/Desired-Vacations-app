@@ -84,6 +84,15 @@ class DetailFragment() : Fragment() {
             binding.detailDescriptionValue.text = currentVacation.description
         }
 
+
+
+        val showSocials =binding.socialsButton
+        showSocials.setOnClickListener {
+            val action =DetailFragmentDirections.actionDetailFragmentToModalBottomSheet()
+            findNavController().navigate(action)
+        }
+
+
         val editBtn = binding.editBtn
         editBtn.setOnClickListener {
             editBtn.visibility = View.GONE

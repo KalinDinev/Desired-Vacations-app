@@ -30,6 +30,7 @@
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,6 +48,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="#FFFFFF" />
 
+            <ImageView
+                android:id="@+id/socialsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:src="@drawable/baseline_more_vert_24"
+                app:layout_constraintBottom_toBottomOf="@+id/detailsToolbar"
+                app:layout_constraintEnd_toEndOf="@+id/detailsToolbar"
+                app:layout_constraintTop_toTopOf="@+id/detailsToolbar" />
+
             <TextView
                 android:id="@+id/detailsTextView"
                 android:layout_width="wrap_content"
@@ -57,7 +68,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/detailsToolbar"
-                app:layout_constraintEnd_toEndOf="@+id/detailsToolbar"
+                app:layout_constraintEnd_toStartOf="@+id/socialsButton"
                 app:layout_constraintStart_toEndOf="@+id/detailBackBtn"
                 app:layout_constraintTop_toTopOf="@+id/detailsToolbar" />
 

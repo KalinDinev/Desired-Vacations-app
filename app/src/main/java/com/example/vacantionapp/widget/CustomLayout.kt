@@ -80,11 +80,8 @@ class CustomLayout @JvmOverloads constructor(
             val popupMessage = "This field cannot be blank"
             showCustomErrorPopup(popupMessage)
 
-//            Toast.makeText(context, "${hintTextView.text} cannot be empty!", Toast.LENGTH_SHORT)
-//                .show()
         }
 
-//        return editText.text.toString()
 
     }
 
