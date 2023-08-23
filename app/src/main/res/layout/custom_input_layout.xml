@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".views.DetailFragment">
+
+    <EditText
+        android:id="@+id/userEditText"
+        android:layout_width="331dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/edit_text_background_primary_border"
+        android:ems="10"
+        android:hint="main hint"
+        android:inputType="textNoSuggestions"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textColorHint="#010002"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/inputButton"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/baseline_clear_24"
+        android:clickable="true"
+        android:contentDescription="Clear"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/userEditText"
+        app:layout_constraintEnd_toEndOf="@+id/userEditText"
+        app:layout_constraintTop_toTopOf="@+id/userEditText" />
+
+
+    <TextView
+        android:id="@+id/hintTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:hint="This is hint"
+        android:textColorHint="#5401C8"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/userEditText"
+        app:layout_constraintTop_toTopOf="@+id/userEditText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

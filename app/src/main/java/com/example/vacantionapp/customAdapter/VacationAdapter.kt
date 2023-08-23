@@ -24,9 +24,9 @@ class VacationAdapter(private val vacationList: List<DesiredVacation>) :
         val locationName = itemView.findViewById<TextView>(R.id.hotelLocationView)
         val notificationBtn = itemView.findViewById<FloatingActionButton>(R.id.notificationBtn)
         val datePicker = itemView.findViewById<DatePicker>(R.id.datePicker)
-        val timePicker =itemView.findViewById<TimePicker>(R.id.timePicker)
+        val timePicker = itemView.findViewById<TimePicker>(R.id.timePicker)
         val setNotificationBtn = itemView.findViewById<Button>(R.id.setNotificationBtn)
-        var isTimePickerVisible =false
+        var isTimePickerVisible = false
         var isDatePickerVisible = false
     }
 
@@ -50,15 +50,15 @@ class VacationAdapter(private val vacationList: List<DesiredVacation>) :
             if (viewHolder.isDatePickerVisible && viewHolder.isDatePickerVisible) {
                 viewHolder.datePicker.visibility = View.GONE
                 viewHolder.setNotificationBtn.visibility = View.GONE
-                viewHolder.timePicker.visibility =View.GONE
+                viewHolder.timePicker.visibility = View.GONE
                 viewHolder.isDatePickerVisible = false
-                viewHolder.isTimePickerVisible =false
+                viewHolder.isTimePickerVisible = false
             } else {
                 viewHolder.datePicker.visibility = View.VISIBLE
                 viewHolder.setNotificationBtn.visibility = View.VISIBLE
-                viewHolder.timePicker.visibility =View.VISIBLE
+                viewHolder.timePicker.visibility = View.VISIBLE
                 viewHolder.isDatePickerVisible = true
-                viewHolder.isTimePickerVisible =true
+                viewHolder.isTimePickerVisible = true
 
 
                 viewHolder.setNotificationBtn.setOnClickListener {
@@ -72,13 +72,12 @@ class VacationAdapter(private val vacationList: List<DesiredVacation>) :
 
                     val hotelName = currentItem.hotelName
 
+
                     // Schedule the notification
                     VacationNotificationHandler.showNotification(
-                        viewHolder.itemView.context,
-                        hotelName,
-                        notificationDate
+                        viewHolder.itemView.context, hotelName, notificationDate, id
 
-                        )
+                    )
 
                     Toast.makeText(
                         viewHolder.itemView.context,
@@ -87,9 +86,9 @@ class VacationAdapter(private val vacationList: List<DesiredVacation>) :
                     ).show()
                     viewHolder.datePicker.visibility = View.GONE
                     viewHolder.setNotificationBtn.visibility = View.GONE
-                    viewHolder.timePicker.visibility =View.GONE
+                    viewHolder.timePicker.visibility = View.GONE
                     viewHolder.isDatePickerVisible = false
-                    viewHolder.isTimePickerVisible =false
+                    viewHolder.isTimePickerVisible = false
 
                 }
             }

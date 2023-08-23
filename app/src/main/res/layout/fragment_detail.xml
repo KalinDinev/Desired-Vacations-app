@@ -7,13 +7,15 @@
     tools:context=".views.DetailFragment">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/scrollView2">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,7 +26,7 @@
                 android:id="@+id/detailsToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#64DD17"
+                android:background="#673AB7"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,108 +75,86 @@
                 android:id="@+id/hotelNameValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
                 android:layout_marginTop="15dp"
                 android:text="hotel name text"
                 android:textSize="15sp"
-                android:layout_marginStart="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailImageView" />
 
-            <EditText
-                android:id="@+id/detailEditName"
-                android:layout_width="match_parent"
+            <com.example.vacantionapp.widget.CustomLayout
+                android:id="@+id/editVacationInput"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:ems="10"
-                android:hint="Edit Name"
-                android:inputType="text"
-                android:textColor="#686262"
-                android:textSize="17sp"
-                android:textStyle="bold"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hotelNameValue" />
+                app:layout_constraintTop_toBottomOf="@+id/hotelNameValue"></com.example.vacantionapp.widget.CustomLayout>
+
             <TextView
                 android:id="@+id/detailLocationValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="6dp"
                 android:text="location value "
                 android:textSize="15sp"
-                android:layout_marginStart="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailEditName" />
+                app:layout_constraintTop_toBottomOf="@+id/editVacationInput" />
 
-            <EditText
-                android:id="@+id/detailEditLocation"
-                android:layout_width="match_parent"
+            <com.example.vacantionapp.widget.CustomLayout
+                android:id="@+id/editLocationInput"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:ems="10"
-                android:hint="Edit Location"
-                android:inputType="text"
-                android:textColor="#686262"
-                android:textSize="17sp"
-                android:textStyle="bold"
                 android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailLocationValue" />
+                app:layout_constraintTop_toBottomOf="@+id/detailLocationValue"></com.example.vacantionapp.widget.CustomLayout>
+
             <TextView
                 android:id="@+id/detailAmountValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="6dp"
                 android:text="amount value"
                 android:textSize="15sp"
-                android:layout_marginStart="6dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailEditLocation" />
+                app:layout_constraintTop_toBottomOf="@+id/editLocationInput" />
 
-            <EditText
-                android:id="@+id/detailEditAmount"
-                android:layout_width="match_parent"
+            <com.example.vacantionapp.widget.CustomLayout
+                android:id="@+id/editAmountInput"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:ems="10"
-                android:hint="Edit Value"
-                android:inputType="number"
-                android:textColor="#686262"
-                android:textSize="17sp"
-                android:textStyle="bold"
                 android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailAmountValue" />
+                app:layout_constraintTop_toBottomOf="@+id/detailAmountValue"></com.example.vacantionapp.widget.CustomLayout>
 
             <TextView
                 android:id="@+id/detailDescriptionValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="4dp"
                 android:text="detail description"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailEditAmount" />
+                app:layout_constraintTop_toBottomOf="@+id/editAmountInput" />
 
-            <EditText
-                android:id="@+id/detailEditDescription"
-                android:layout_width="match_parent"
+            <com.example.vacantionapp.widget.CustomLayout
+                android:id="@+id/editDescriptionInput"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:ems="10"
-                android:hint="Edit Description"
-                android:inputType="text"
-                android:textColor="#686262"
-                android:textSize="17sp"
-                android:textStyle="bold"
                 android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailDescriptionValue" />
@@ -183,36 +163,33 @@
                 android:id="@+id/editBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
 
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="3dp"
-                android:backgroundTint="#64DD17"
+                android:backgroundTint="#673AB7"
                 android:clickable="true"
                 android:importantForAccessibility="no"
                 android:src="@drawable/baseline_edit_24"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailDescriptionValue"
+                app:layout_constraintTop_toBottomOf="@+id/editDescriptionInput"
                 app:tint="#FFFFFF" />
 
             <Button
                 android:id="@+id/editVacationBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:backgroundTint="#64DD17"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#673AB7"
                 android:text="EDIT"
                 android:textColor="@color/white"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.459"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detailEditDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/editDescriptionInput" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

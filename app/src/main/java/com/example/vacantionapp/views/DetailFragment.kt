@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
+import android.text.InputType
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,6 +23,7 @@ import coil.request.SuccessResult
 import com.example.vacantionapp.model.DesiredVacation
 import com.example.vacantionapp.viewModel.VacationViewModel
 import com.example.vacantionapp.databinding.FragmentDetailBinding
+import com.example.vacantionapp.widget.CustomLayout
 import kotlinx.coroutines.launch
 
 
@@ -31,20 +32,31 @@ class DetailFragment() : Fragment() {
     private val args by navArgs<DetailFragmentArgs>()
     private lateinit var binding: FragmentDetailBinding
     private lateinit var myViewModel: VacationViewModel
+    private lateinit var customLayout: CustomLayout
     private var myUri: Uri? = null
     private var bitmap: Bitmap? = null
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         // Inflate the layout for this fragment
-        binding = FragmentDetailBinding.inflate(inflater, container, false)
+        binding = FragmentDetailBinding.inflate(layoutInflater)
         val root = binding.root
+        customLayout = CustomLayout(requireContext())
+        setInitialHint()
+
+
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 
         val currentId = args.currentId
+
 
         val pickMedia =
             registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
@@ -80,23 +92,44 @@ class DetailFragment() : Fragment() {
                 pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
             }
 
-            val vacationNameInput = binding.detailEditName
+
+            val vacationNameInput = binding.editVacationInput
             vacationNameInput.visibility = View.VISIBLE
-            val vacationEditLocation = binding.detailEditLocation
+
+
+            val vacationEditLocation = binding.editLocationInput
             vacationEditLocation.visibility = View.VISIBLE
-            val vacationEditAmount = binding.detailEditAmount
+
+            val vacationEditAmount = binding.editAmountInput
             vacationEditAmount.visibility = View.VISIBLE
-            val vacationEditDescription = binding.detailEditDescription
+            //Setting editText in cost input to be of type NUMBER by default is text!More user friendly!
+            vacationEditAmount.editText.inputType = InputType.TYPE_CLASS_NUMBER
+
+            val vacationEditDescription = binding.editDescriptionInput
             vacationEditDescription.visibility = View.VISIBLE
+
             val vacationEditButton = binding.editVacationBtn
             vacationEditButton.visibility = View.VISIBLE
 
+            var vacationInputValue = vacationNameInput.getUserInputText()
+            var locationInputValue = vacationEditLocation.getUserInputText()
+            var amountInputValue = vacationEditAmount.getUserInputText()
+            var descriptionInputValue = vacationEditDescription.getUserInputText()
+
 
             vacationEditButton.setOnClickListener {
-                val vacationInput = vacationNameInput.text.toString()
-                val locationInput = vacationEditLocation.text.toString()
-                val amountInput = vacationEditAmount.text.toString()
-                val descriptionInput = vacationEditDescription.text.toString()
+
+
+                vacationInputValue = vacationNameInput.getUserInputText()
+                locationInputValue = vacationEditLocation.getUserInputText()
+                amountInputValue = vacationEditAmount.getUserInputText()
+                descriptionInputValue = vacationEditDescription.getUserInputText()
+
+                vacationNameInput.editText.clearFocus()
+                vacationEditAmount.editText.clearFocus()
+                vacationEditLocation.editText.clearFocus()
+                vacationEditDescription.editText.clearFocus()
+
 
                 lifecycleScope.launch {
 
@@ -106,37 +139,49 @@ class DetailFragment() : Fragment() {
                         bitmap
                     }
 
-                    if(inputCheck(vacationInput,locationInput,amountInput,descriptionInput)) {
+                    if (vacationNameInput.editText.text.isEmpty()) {
+                        vacationNameInput.errorFields()
+                    }
+                    if (vacationEditLocation.editText.text.isEmpty()) {
+                        vacationEditLocation.errorFields()
+                    }
+
+
+                    if (vacationNameInput.editText.text.isNotEmpty() && vacationEditLocation.editText.text.isNotEmpty()) {
+
 
                         val editVacation = DesiredVacation(
                             currentId,
-                            vacationInput,
-                            locationInput,
-                            amountInput,
-                            descriptionInput,
+                            vacationInputValue,
+                            locationInputValue,
+                            amountInputValue,
+                            descriptionInputValue,
                             bitmapToUpdate!!
                         )
                         myViewModel.updateVacation(editVacation)
-                        Toast.makeText(requireContext(), "Successfully edited!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Successfully edited!", Toast.LENGTH_SHORT)
+                            .show()
 
-                        val action = DetailFragmentDirections.actionDetailFragmentToVacationsFragment()
+                        val action =
+                            DetailFragmentDirections.actionDetailFragmentToVacationsFragment()
                         findNavController().navigate(action)
-                    }else{
-                        Toast.makeText(requireContext(), "Make edit!", Toast.LENGTH_SHORT).show()
 
+                    } else {
+                        Toast.makeText(
+                            requireContext(), "Name and location requared!", Toast.LENGTH_SHORT
+                        ).show()
                     }
-
                 }
 
             }
+
         }
+
 
         val backBtn = binding.detailBackBtn
         backBtn.setOnClickListener {
             findNavController().navigateUp()
         }
-
-        return root
     }
 
     private suspend fun getBitmap(uri: Uri): Bitmap {
@@ -147,8 +192,30 @@ class DetailFragment() : Fragment() {
         return (result as BitmapDrawable).bitmap
     }
 
-    private fun inputCheck(vacationName:String,location:String,amount:String,description:String): Boolean {
-        return !(TextUtils.isEmpty(vacationName) && TextUtils.isEmpty(location) &&TextUtils.isEmpty(amount) && TextUtils.isEmpty(description)  )
-    }
+//    private fun inputCheck(
+//        vacationName: String,
+//        location: String,
+//        amount: String,
+//        description: String
+//    ): Boolean {
+//        return !(TextUtils.isEmpty(vacationName) && TextUtils.isEmpty(location) && TextUtils.isEmpty(
+//            amount
+//        ) && TextUtils.isEmpty(description))
+//    }
 
+
+    private fun setInitialHint() {
+
+        binding.editVacationInput.hintTextView.hint = "Edit Vacation"
+        binding.editVacationInput.editText.hint = "Edit Vacation Name"
+
+        binding.editLocationInput.hintTextView.hint = "Edit Location"
+        binding.editLocationInput.editText.hint = "Edit Vacation Location"
+
+        binding.editAmountInput.hintTextView.hint = "Edit Amount"
+        binding.editAmountInput.editText.hint = "Edit Amount"
+
+        binding.editDescriptionInput.hintTextView.hint = "Edit Description "
+        binding.editDescriptionInput.editText.hint = "Edit Description"
+    }
 }

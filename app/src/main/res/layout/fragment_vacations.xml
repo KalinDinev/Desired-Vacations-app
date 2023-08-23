@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#64DD17"
+        android:backgroundTint="#673AB7"
         android:clickable="true"
         android:importantForAccessibility="no"
         android:src="@drawable/baseline_add_circle_24"

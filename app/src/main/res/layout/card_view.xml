@@ -49,7 +49,7 @@
             android:outlineProvider="none"
             app:backgroundTint="@color/white"
             app:srcCompat="@drawable/baseline_notifications_24"
-            app:tint="#000000" />
+            app:tint="#673AB7" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,7 +93,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:backgroundTint="#64DD17"
+            android:backgroundTint="#673AB7"
             android:text="SET"
             android:textStyle="bold"
             android:visibility="gone" />
