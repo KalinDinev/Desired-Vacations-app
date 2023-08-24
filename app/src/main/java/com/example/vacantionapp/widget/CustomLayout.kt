@@ -68,9 +68,6 @@ class CustomLayout @JvmOverloads constructor(
         inputButton.background = errorImage
         inputButton.visibility = View.VISIBLE
 
-
-
-
         editText.doOnTextChanged { text, start, before, count -> getUserInputText() }
 
 

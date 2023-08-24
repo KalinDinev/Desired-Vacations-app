@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 class DetailFragment() : Fragment() {
 
-    private val args by navArgs<DetailFragmentArgs>()
+    private val detailFragmentArgs by navArgs<DetailFragmentArgs>()
     private lateinit var binding: FragmentDetailBinding
     private lateinit var myViewModel: VacationViewModel
     private lateinit var customLayout: CustomLayout
@@ -39,7 +39,7 @@ class DetailFragment() : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Inflate the layout for this fragment
         binding = FragmentDetailBinding.inflate(layoutInflater)
@@ -55,7 +55,8 @@ class DetailFragment() : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val currentId = args.currentId
+        val currentId = detailFragmentArgs.currentId
+        val isEditClicked =detailFragmentArgs.isEditClicked
 
 
         val pickMedia =
@@ -86,16 +87,14 @@ class DetailFragment() : Fragment() {
 
 
 
-        val showSocials =binding.socialsButton
-        showSocials.setOnClickListener {
-            val action =DetailFragmentDirections.actionDetailFragmentToModalBottomSheet()
+        val showModalSheet =binding.showModal
+        showModalSheet.setOnClickListener {
+            val action =DetailFragmentDirections.actionDetailFragmentToModalBottomSheet(currentId)
             findNavController().navigate(action)
         }
 
+        if(isEditClicked) {
 
-        val editBtn = binding.editBtn
-        editBtn.setOnClickListener {
-            editBtn.visibility = View.GONE
 
             binding.detailImageView.setOnClickListener {
                 pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageAndVideo))
@@ -183,13 +182,13 @@ class DetailFragment() : Fragment() {
                 }
 
             }
-
         }
 
 
         val backBtn = binding.detailBackBtn
         backBtn.setOnClickListener {
-            findNavController().navigateUp()
+            val action =DetailFragmentDirections.actionDetailFragmentToVacationsFragment()
+            findNavController().navigate(action)
         }
     }
 
@@ -200,18 +199,6 @@ class DetailFragment() : Fragment() {
         val result = (loading.execute(request) as SuccessResult).drawable
         return (result as BitmapDrawable).bitmap
     }
-
-//    private fun inputCheck(
-//        vacationName: String,
-//        location: String,
-//        amount: String,
-//        description: String
-//    ): Boolean {
-//        return !(TextUtils.isEmpty(vacationName) && TextUtils.isEmpty(location) && TextUtils.isEmpty(
-//            amount
-//        ) && TextUtils.isEmpty(description))
-//    }
-
 
     private fun setInitialHint() {
 

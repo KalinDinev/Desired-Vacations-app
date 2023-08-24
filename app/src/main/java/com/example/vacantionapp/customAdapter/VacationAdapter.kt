@@ -44,7 +44,7 @@ class VacationAdapter(private val vacationList: List<DesiredVacation>) :
 
         viewHolder.cardImage.setImageBitmap(bitmap)
         viewHolder.hotelName.text = currentItem.hotelName
-        viewHolder.locationName.text = "Hotel in ${currentItem.location}"
+        viewHolder.locationName.text = "Location: ${currentItem.location}"
 
         viewHolder.notificationBtn.setOnClickListener {
             if (viewHolder.isDatePickerVisible && viewHolder.isDatePickerVisible) {
@@ -95,7 +95,9 @@ class VacationAdapter(private val vacationList: List<DesiredVacation>) :
         }
 
         viewHolder.itemView.setOnClickListener {
-            val action = VacationsFragmentDirections.actionVacationsFragmentToDetailFragment(id)
+
+            val isClicked =false
+            val action = VacationsFragmentDirections.actionVacationsFragmentToDetailFragment(id,isClicked)
             viewHolder.itemView.findNavController().navigate(action)
         }
     }

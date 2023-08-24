@@ -49,7 +49,7 @@
                 app:tint="#FFFFFF" />
 
             <ImageView
-                android:id="@+id/socialsButton"
+                android:id="@+id/showModal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
@@ -62,13 +62,12 @@
                 android:id="@+id/detailsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vacation Details:"
-                android:textAllCaps="true"
+                android:text="Vacation Details"
                 android:textColor="#DFFFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/detailsToolbar"
-                app:layout_constraintEnd_toStartOf="@+id/socialsButton"
+                app:layout_constraintEnd_toStartOf="@+id/showModal"
                 app:layout_constraintStart_toEndOf="@+id/detailBackBtn"
                 app:layout_constraintTop_toTopOf="@+id/detailsToolbar" />
 
@@ -169,22 +168,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/detailDescriptionValue" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/editBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#673AB7"
-                android:clickable="true"
-                android:importantForAccessibility="no"
-                android:src="@drawable/baseline_edit_24"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editDescriptionInput"
-                app:tint="#FFFFFF" />
 
             <Button
                 android:id="@+id/editVacationBtn"

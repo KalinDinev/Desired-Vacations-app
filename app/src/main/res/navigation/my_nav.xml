@@ -11,10 +11,18 @@
         tools:layout="@layout/fragment_vacations" >
         <action
             android:id="@+id/action_vacationsFragment_to_createVacation"
-            app:destination="@id/createVacation" />
+            app:destination="@id/createVacation"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_vacationsFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/createVacation"
@@ -23,7 +31,11 @@
         tools:layout="@layout/fragment_create_vacation" >
         <action
             android:id="@+id/action_createVacation_to_vacationsFragment"
-            app:destination="@id/vacationsFragment" />
+            app:destination="@id/vacationsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -32,17 +44,25 @@
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/action_detailFragment_to_vacationsFragment"
-            app:destination="@id/vacationsFragment" />
+            app:destination="@id/vacationsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="currentId"
             app:argType="integer" />
         <action
             android:id="@+id/action_detailFragment_to_modalBottomSheet"
-            app:destination="@id/modalBottomSheet" />
+            app:destination="@id/modalBottomSheet"
+            app:enterAnim="@android:anim/fade_out" />
+        <argument
+            android:name="isEditClicked"
+            app:argType="boolean" />
     </fragment>
     <dialog
         android:id="@+id/socialsFragment"
-        android:name="com.example.vacantionapp.modal.SocialsFragment"
+        android:name="com.example.vacantionapp.modal.ModalSocialSheet"
         android:label="fragment_socials"
         tools:layout="@layout/fragment_socials" >
         <action
@@ -55,13 +75,24 @@
         android:label="fragment_modal_bottom_sheet"
         tools:layout="@layout/fragment_modal_bottom_sheet" >
         <action
-            android:id="@+id/action_modalBottomSheet_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
             android:id="@+id/action_modalBottomSheet_to_socialsFragment"
             app:destination="@id/socialsFragment" />
         <action
             android:id="@+id/action_modalBottomSheet_to_vacationsFragment"
-            app:destination="@id/vacationsFragment" />
+            app:destination="@id/vacationsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_modalBottomSheet_to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="currentId"
+            app:argType="integer" />
     </dialog>
 </navigation>

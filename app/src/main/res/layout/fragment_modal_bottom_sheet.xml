@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
-        android:text="Edit vacation"
+        android:text="Edit Vacation"
         android:textColor="#514F4F"
         app:layout_constraintStart_toEndOf="@+id/editImageModal"
         app:layout_constraintTop_toTopOf="parent" />

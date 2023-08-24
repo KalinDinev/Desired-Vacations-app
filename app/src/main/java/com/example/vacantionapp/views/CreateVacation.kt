@@ -176,16 +176,6 @@ class CreateVacation : Fragment() {
         return (result as BitmapDrawable).bitmap
     }
 
-//    private fun inputCheck(
-//        vacationName: String,
-//        location: String,
-//        amount: String,
-//        description: String,
-//    ): Boolean {
-//        return !(TextUtils.isEmpty(vacationName) && TextUtils.isEmpty(location) && TextUtils.isEmpty(
-//            amount
-//        ) && TextUtils.isEmpty(description))
-//    }
 
 
     private fun setInitialHint() {
